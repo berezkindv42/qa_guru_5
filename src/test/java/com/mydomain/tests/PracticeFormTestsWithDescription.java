@@ -9,8 +9,15 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.mydomain.tests.TestData.userEmail;
 
-public class PracticeFormWithPageObjectsTests {
+public class PracticeFormTestsWithDescription {
+
+    // Можно вынести данный в переменные и применять их вместо строк заполнения формы
+//        String firstName = "Vasiliy";
+//        String lastName = "Pupkin";
+    // Далее в коде все строки вынесенные в переменные должны быть заменены на имена переменных
+    // Либо можно эти переменные вынести в отдельный класс (TestData) к userEmail например
 
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -24,13 +31,14 @@ public class PracticeFormWithPageObjectsTests {
     void runTests() {
 //        registrationPage.openPage();
 //        registrationPage.typeFirstName("Vasiliy");
-//        registrationPage.typeLastName("Vasiliy");
+//        registrationPage.typeLastName("Pupkin"); // можно так
 
         registrationPage.openPage()
                 .typeFirstName("Vasiliy")
-                .typeLastName("Pupkin");
-        $("#lastName").setValue("Pupkin");
-        $("#userEmail").setValue("vasiliy.p@email.com");
+                .typeLastName("Pupkin"); // а можно вот так
+
+        $("#userEmail").setValue(userEmail);
+
         $("label.custom-control-label").shouldHave(text("Male")).click();
         $("#userNumber").setValue("4951234567");
         registrationPage.calendarComponent.setDate("12", "April", "1961"); // вызов из отдельного класса // можно так
@@ -58,9 +66,9 @@ public class PracticeFormWithPageObjectsTests {
 //        Asserts
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 //        registrationPage.checkResultValue("Student Name", "Vasiliy Pupkin");
-//        registrationPage.checkResultValue("Student Name", "Vasiliy Pupkin");
-//        registrationPage.checkResultValue("Student Name", "Vasiliy Pupkin");
-//        registrationPage.checkResultValue("Student Name", "Vasiliy Pupkin"); // можно так
+//        registrationPage.checkResultValue("Gender", "Male");
+//        registrationPage.checkResultValue("Some Text", "Some Text");
+//        registrationPage.checkResultValue("Some Text", "Some Text"); // можно так
         registrationPage.checkResultValue("Student Name", "Vasiliy Pupkin") // а можно вот так, подход вызова метода у метода называется chain или DSL или fluent
                 .checkResultValue("Student Email", "vasiliy.p@email.com")
                 .checkResultValue("Gender", "Male")
