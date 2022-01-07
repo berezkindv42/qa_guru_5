@@ -8,8 +8,13 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.mydomain.utils.RandomUtils.getRandomEmail;
+import static com.mydomain.utils.RandomUtils.getRandomString;
 
-public class PracticeForm {
+public class PracticeFormWithRandom {
+
+    String firstName = getRandomString(7);
+    String userEmail = getRandomEmail();
 
     @BeforeAll
     static void beforeAllMethod() {
@@ -21,9 +26,9 @@ public class PracticeForm {
     void runTests() {
         open("/automation-practice-form");
 
-        $("#firstName").setValue("Vasiliy");
+        $("#firstName").setValue(firstName);
         $("#lastName").setValue("Pupkin");
-        $("#userEmail").setValue("vasiliy.p@email.com");
+        $("#userEmail").setValue(userEmail);
         $("label.custom-control-label").shouldHave(text("Male")).click();
         $("#userNumber").setValue("4951234567");
         $("#dateOfBirthInput").click();
@@ -46,8 +51,8 @@ public class PracticeForm {
 
 //        Asserts
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-body").shouldHave(text("Vasiliy Pupkin"),
-                text("vasiliy.p@email.com"),
+        $(".modal-body").shouldHave(text(firstName + " Pupkin"),
+                text(userEmail),
                 text("Male"),
                 text("4951234567"),
                 text("12 April,1961"),
