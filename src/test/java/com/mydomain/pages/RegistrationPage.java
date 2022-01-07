@@ -14,7 +14,7 @@ public class RegistrationPage {
     SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            redultsTable = $(".table-responsive");
+            resultsTable = $(".table-responsive");
 
     public CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -42,14 +42,14 @@ public class RegistrationPage {
 
 
     /*
-    public AnotherPage clockOnAnotherPage() {
+    public AnotherPage clickOnAnotherPage() {
         $("").click();
         return new AnotherPage;
     }
      */
 
     public RegistrationPage checkResultValue(String key, String value) {
-        redultsTable.$(byText(key))
+        resultsTable.$(byText(key))
                 .parent()
                 .shouldHave(text(value));
         firstNameInput.setValue(value);

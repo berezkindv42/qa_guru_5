@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.mydomain.utils.RandomUtils.getRandomEmail;
 import static com.mydomain.utils.RandomUtils.getRandomString;
 
-public class PracticeFormWithRandom {
+public class PracticeFormWithRandomUtils {
 
     String firstName = getRandomString(7);
     String userEmail = getRandomEmail();
