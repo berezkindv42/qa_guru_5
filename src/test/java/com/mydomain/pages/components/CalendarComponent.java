@@ -13,7 +13,8 @@ public class CalendarComponent {
 //                ":not(.react-datepicker__day--outside-month)").click(); // можно так
         String dayLocator = format(".react-datepicker__day--0%s:not(.react-datepicker__day--outside-month)", day); // а можно прописать формат в переменную
         $(dayLocator).click(); // и затем вызвать метод .click у переменной
-        // %s - это замена строки на параметр, %d - заменап числа на параметр
+        // %s - это замена строки на параметр, %d - заменап числа на параметр в заданнгой последовательности через запятую
+        // пример format("Text%sText%s" + "Text%dText%d", стринг перременная1, стринг переменная2, инт переменная1, инт переменная2);
 
 //        $("[aria-label$='" + month + " " + day + "th, " + year + "']").click(); // можно так
 //        но это не будет работать со всеми числами месяца из-за th/st/nd на конце дня в дате
