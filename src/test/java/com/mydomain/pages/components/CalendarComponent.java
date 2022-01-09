@@ -9,8 +9,7 @@ public class CalendarComponent {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);
         $(".react-datepicker__year-select").selectOption(year);
-//        $(".react-datepicker__day--0" + day +
-//                ":not(.react-datepicker__day--outside-month)").click(); // можно так
+//        $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click(); // можно так
         String dayLocator = format(".react-datepicker__day--0%s:not(.react-datepicker__day--outside-month)", day); // а можно прописать формат в переменную
         $(dayLocator).click(); // и затем вызвать метод .click у переменной
         // %s - это замена строки на параметр, %d - заменап числа на параметр в заданнгой последовательности через запятую
